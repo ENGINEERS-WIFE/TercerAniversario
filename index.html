@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz 3er Aniversario</title>
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- BOTÓN DE MÚSICA -->
+<button id="music-btn">🎵 Música</button>
+<audio id="bg-music" src="audio/TercerAudio.m4a" loop></audio>
+
+<audio id="carta-audio" src="audio/LaDistancia.m4a"></audio>
+
+    <!-- Corazones flotando -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- BOTONES SECRETOS (sacados del container) -->
+    <div class="secret-buttons">
+        <button class="secret-btn s1">?</button>
+        <button class="secret-btn s2">?</button>
+        <button class="secret-btn s3">?</button>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container">
+
+        <!-- TÍTULO Y BOTÓN DE CARTA -->
+        <h1 class="titulo">Feliz 3er Aniversario, mi amor</h1>
+        <button id="btnAbrirCarta" class="btn-carta">💌 Abrir Carta</button>
+
+<!-- BOTÓN PARA ABRIR GALERÍA -->
+<button id="btnGaleria" class="btn-carta">📸 Ver Galería</button>
+    </div>
+<button id="btnJuegos" class="btn-carta">🎮 Juegos</button>
+
+<!-- MODAL DE GALERÍA -->
+<div id="galeriaModal" class="modal-galeria">
+    <span class="cerrar-galeria">×</span>
+    <div class="galeria-contenido">
+        <div class="galeria-slider">
+            <!-- Fotos se cargarán automáticamente desde JS -->
+        </div>
+        <button class="flecha izquierda">&#10094;</button>
+        <button class="flecha derecha">&#10095;</button>
+    </div>
+</div>
+
+<div class="polaroid-container">
+    
+    <!-- POLAROID IZQUIERDA -->
+    <div class="polaroid">
+        <img src="img/foto1.jpg" alt="Foto izquierda" class="polaroid-img">
+        <p class="polaroid-caption">Te elegiría incluso en otra vida ❤️</p>
+    </div>
+
+    <!-- POLAROID CENTRO -->
+    <div class="polaroid">
+        <img src="img/tu-foto.jpg" alt="Foto especial" class="polaroid-img">
+        <p class="polaroid-caption">Amarte fue inevitable❤️</p>
+    </div>
+
+    <!-- POLAROID DERECHA -->
+    <div class="polaroid">
+        <img src="img/foto3.jpg" alt="Foto derecha" class="polaroid-img">
+        <p class="polaroid-caption">Aunque estes lejos así imagino nuestros abrazos ❤️</p>
+    </div>
+
+</div>
+
+<!-- BOTONES SORPRESA -->
+<div class="botones-sorpresa">
+    <button class="btn-sorpresa" data-msg="🌸 Una flor para vos, mi amor.">Flores 🌸</button>
+    <button class="btn-sorpresa" data-msg="💖 No importa la distancia, siempre sos mi hogar, mi refugio.">Corazones 💖</button>
+    <button class="btn-sorpresa" data-msg="✨ Sos la mejor parte de mis días.">Mensaje ✨</button>
+</div>
+
+<!-- CONTENEDOR PARA LOS EFECTOS -->
+<div id="efecto-contenedor"></div>
+
+<!-- MENSAJE FLOTANTE-->
+<div id="mensaje-flotante"></div>
+
+    <!-- MODALES DE MENSAJES SECRETOS -->
+    <div class="modal-secreto" id="msj1">
+        <div class="contenido-secreto">
+            <span class="cerrar-secreto">×</span>
+            <p>
+                ✨ Este es tu primer mensaje secreto…<br>
+                Sos mi refugio, incluso cuando estás lejos.
+            </p>
+        </div>
+    </div>
+
+    <div class="modal-secreto" id="msj2">
+        <div class="contenido-secreto">
+            <span class="cerrar-secreto">×</span>
+            <p>
+                💗 Segundo mensaje secreto…<br>
+                Te elegiría en todos los universos posibles.
+            </p>
+        </div>
+    </div>
+
+    <div class="modal-secreto" id="msj3">
+        <div class="contenido-secreto">
+            <span class="cerrar-secreto">×</span>
+            <p>
+                🌙 Tercer mensaje secreto…<br>
+                El camino que tú y yo vamos a recorrer, es el camino hacia la eternidad.
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL PRINCIPAL DE LA CARTA -->
+    <div class="carta-modal" id="cartaModal">
+        <div class="sobre">
+            <div class="tapa"></div>
+
+            <div class="contenido">
+                <button id="cerrarCarta" class="btnCerrar">X</button>
+
+                <h2 class="titulo-carta">Mi amor…</h2>
+
+<p class="texto-carta">
+    Hoy cumplimos tres años…<br><br>
+
+    Tres años ya, es increíble cómo pasa el tiempo. Y aunque no recuerdo exactamente cómo fue nuestra primera conversación, sí recuerdo la conversación que tuvimos cuando al fin volvimos a intentarlo, me causa un poco de orgullo saber que, gracias a mi insistencia (y a tu forma de no querer dejarme) ahora estamos juntos, hoy estamos juntos a pesar de todo, seguimos aquí. Amándonos.<br><br>
+
+    Aprendimos a seguir juntos a pesar de los miles de kilómetros que nos separan hoy en día. Aprendimos que la distancia no es tan cruel cuando el amor es fuerte tal y como es el nuestro. Desde hace más de tres años no hubo un solo día sin hablar, sin compartir algo, sin sentir que el otro estaba ahí, sin reírnos mientras jugamos aunque nos pusiéramos serios por nuestra competitividad o al menos yo lo siento así. Esos momentos, esos breves momentos me dan años de vida.<br><br>
+
+    Eres mi pilar, mi amor, eres el que me sostiene cuando siento que no puedo más.<br><br>
+
+    La verdad, siempre pensé que no podía tener esto, que no era merecedora de amor. Pero tú me hiciste dar cuenta que una persona puede dar un amor tan hermoso, tan bello, tan sincero. Un amor que no exige, que no lastima, que no me hace sentir menos, sino que me hace sentir calma. Que me hace sentir plena, básicamente en paz.<br><br>
+
+    Nunca me dejaste sola. Nunca me soltaste. Incluso cuando yo misma dudaba de mí.<br><br>
+
+    Hay días en los que todo parece confuso, pesado o injusto, donde siento que el mundo se me viene encima, donde no pienso con claridad, pero vos… Vos sos lo único que tiene sentido en mi vida. Por eso te elegiría incluso sin recordar quién soy. Te elegiría en cualquier mundo, en cualquier universo. Porque te amo de una forma que no puedo expresar con palabras, tampoco soy buena en ello y esta carta es un intento de poder expresar un poco este amor que siento por vos.<br><br>
+
+    Lo que hemos pasado estos últimos días me hizo acordar a una pregunta de WandaVision y dice así… ¿Qué es el dolor, sino el amor perseverando? Esto significa que el dolor que sentimos, en nuestro caso al tener una discusión, es proporcional a la profundidad del amor y que este no desaparece, sino que se transforma en una fuerza que va a persistir y seguir adelante. Y al recordar eso me di cuenta que nosotros sabemos perseverar… Sabemos quedarnos, luchar por esto que sentimos o simplemente somos muy tercos pero juntos.<br><br>
+
+    Tal vez no sea perfecta, tal vez tenga miedos, errores, inseguridades y sabes que tengo todo eso… pero te amo, ¡Ay Steven te amo tanto!... Te amo con todo lo que soy, con cada parte de mí… Te amo y no tienes idea de cuánto lo hago.<br><br>
+
+    Nunca he amado a nadie como te amo a vos.<br><br>
+
+    Nunca pensé que alguien pudiera quererme como tú lo haces, pero tú… Tú me amas de una forma tan real, tan paciente, tan cercana, tan emotiva, tan romántica, tan profundamente hermosa que a veces dudo de que sea verdad.<br><br>
+
+    Elegirte fue mi mejor decisión y lo sigue siendo cada día.<br><br>
+
+    No importa lo que pase, no importa lo que digan, no importa lo que el destino nos depare, no importa lo que cambie en el camino… Vamos a seguir juntos, siempre lo haremos porque juntos, no hay nadie ni nada que nos pueda detener.<br><br>
+
+    Te amaré hasta la eternidad… Aun si la “eternidad” ya no es eterna, yo te amaré igualmente.<br><br>
+
+    Porque lo nuestro no se mide en tiempo, distancia o cantidad de mensajes, se mide en lo que sentimos, en lo que somos cuando estamos el uno para el otro.<br><br>
+
+    Gracias…<br>
+    Gracias por ser la causa de mi sonrisa cuando estoy triste.<br>
+    Gracias por ser mi refugio incluso estando tan lejos.<br>
+    Gracias por ser mi paz en una tormenta emocional.<br>
+    Gracias por ser mi fuerza cuando siento que no puedo más.<br>
+    Gracias… por ser toda mi vida.<br><br>
+
+    Te amo tres millones mi amor. &lt;3
+</p>
+
+                <p class="firma-carta">– Con todo mi amor, tu futura esposa</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO DE FONDO -->
+        <source src="audio/TercerAudio.m4a" type="audio/mp4">
+    </audio>
+
+<!-- BOTÓN PARA ABRIR JUEGOS (déjalo dentro del .container o donde ya está) -->
+<!-- <button id="btnJuegos" class="btn-carta">🎮 Juegos</button> -->
+
+<!-- MODAL PRINCIPAL DE JUEGOS (reemplaza cualquier otro modalJuegos que tengas) -->
+<div id="modalJuegos" class="modal-juegos" style="display:none;">
+  <div class="contenido-juegos">
+    <span id="cerrarJuegos" class="cerrar-x">×</span>
+    <h2 class="titulo-juegos">Minijuegos 💕</h2>
+
+    <div class="lista-juegos">
+      <!-- 10 botones — cada uno abre su submodal -->
+      <button class="juego-btn" data-juego="1">Juego 1: Encuentra el corazón</button>
+      <button class="juego-btn" data-juego="2">Juego 2: Rompecorazones</button>
+      <button class="juego-btn" data-juego="3">Juego 3: Quiz romántico</button>
+      <button class="juego-btn" data-juego="4">Juego 4: Sopla las rosas</button>
+      <button class="juego-btn" data-juego="5">Juego 5: Puzzle de foto</button>
+      <button class="juego-btn" data-juego="6">Juego 6: Gira la botella</button>
+      <button class="juego-btn" data-juego="7">Juego 7: Adivina la canción</button>
+      <button class="juego-btn" data-juego="8">Juego 8: Caja fuerte</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUB-MODALES (estructura mínima para cada juego) -->
+<!-- copia/pega exactamente este bloque 10 veces cambiando data-juego y id -->
+<!-- 🎮 SUBMODAL JUEGO 1 -->
+<div id="modalJuego1" class="modal-juego" style="display:none;">
+  <div class="contenido-juego juego-estetico">
+    
+    <!-- Botón cerrar del submodal -->
+    <span class="cerrar-submodal" data-juego="1">×</span>
+
+    <!-- TÍTULO DEL JUEGO -->
+    <h2 class="titulo-juego">💘 Encuentra mi corazón 💘</h2>
+
+    <!-- CUERPO DEL JUEGO -->
+    <div class="juego1-wrapper">
+      
+      <button id="btnStartJuego1" class="btn-iniciar-juego">
+        ¡Empezar!
+      </button>
+
+      <div id="areaJuego1" class="area-juego"></div>
+
+      <p id="mensajeJuego1" class="mensaje-tierno" style="display:none;">
+        💗 ¡Qué rápido encontraste mi corazón! 💗
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<div id="modalJuego2" class="modal-juego" style="display:none;">
+  <div class="contenido-juego">
+    <span class="cerrar-submodal" data-juego="2">×</span>
+
+    <!-- Aquí dentro va el juego -->
+    <div id="juego-2-contenido">
+
+      <h2 class="titulo-juego2">Juego 2: Encuentra el corazón verdadero 💓</h2>
+      <button id="startGame2" class="boton-juego2">Iniciar</button>
+
+      <div id="gameArea2" class="corazones-container"></div>
+
+      <p id="timer2">⏳10</p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal resultado especial del juego (fuera del submodal del juego) -->
+<div id="modal2" class="modal2">
+    <div class="modal2-content">
+        <p id="resultMessage2"></p>
+        <button id="closeModal2" class="cerrar-modal">Cerrar</button>
+    </div>
+</div>
+
+<!-- BOTÓN QUE ABRE EL JUEGO 3 -->
+
+<!-- MODAL JUEGO 3 -->
+<div id="modalJuego3" class="modal-juego" style="display:none;">
+  <div class="contenido-juego quiz-dark">
+
+      <span class="cerrar-submodal" data-juego="3">×</span>
+
+      <div id="quizContainer">
+          <h2 class="titulo-quiz">💖 Quiz Romántico</h2>
+          <p id="quizPregunta" class="quiz-pregunta"></p>
+
+          <div id="quizOpciones" class="quiz-opciones"></div>
+
+          <p id="quizProgreso" class="quiz-progreso"></p>
+      </div>
+
+      <!-- FINAL -->
+      <div id="quizFinal" style="display:none;">
+        <h2 class="titulo-quiz">Resultado 💞</h2>
+        <p id="quizResultadoTexto"></p>
+        <button id="btnCerrarQuiz" class="boton-juego2">Cerrar</button>
+      </div>
+
+  </div>
+</div>
+
+<!-- ================= MODAL JUEGO 4 ================= -->
+<div id="modalJuego4" class="modal-juego" style="display:none;">
+  <div class="contenido-juego">
+    <!-- Botón cerrar -->
+    <span class="cerrar-submodal" data-juego="4">×</span>
+
+    <!-- Contenido del juego 4 -->
+    <div id="juego-4-contenido">
+      <h2 class="titulo-juego">🌹 Sopla las rosas</h2>
+
+      <div class="sopla-intro">
+        <p>Solo pasa el dedo o el cursor sobre las rosas para soplarlas.</p>
+        <button id="startGame4" class="boton-juego2">¡Soplar!</button>
+      </div>
+
+      <!-- Imagen secreta en el centro -->
+      <div class="centro-habilidad">
+        <img id="imgHabilidad" src="img/habilidad.png">
+      </div>
+
+      <div id="areaGame4" class="area-game4"></div>
+
+      <p id="contador4" class="contador4">
+        Rosas restantes: <span id="restantes4">20</span>
+      </p>
+
+      <div id="finalMessage4" class="final-message4" style="display:none; text-align:center;">
+        <img src="img/habilidad.jpg" 
+             alt="Nueva habilidad desbloqueada" 
+             class="habilidad-img">
+        <p class="mensaje-habilidad">
+          🌹✨ Ok, oficial: te ganaste un beso por habilidad floral. ✨🌹
+        </p>
+        <button id="closeGame4" class="boton-juego2">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL JUEGO 5 ================= -->
+<div id="modalJuego5" class="modal-juego" style="display:none;">
+  <div class="contenido-juego">
+    <!-- Botón cerrar -->
+    <span class="cerrar-submodal" data-juego="5">×</span>
+
+    <!-- Contenido del juego 5 -->
+    <div id="juego-5-container">
+      <h2 class="titulo-juego">🧩 Puzzle Romántico</h2>
+
+      <!-- Área del puzzle -->
+      <div id="puzzle-area"></div>
+
+      <!-- Mensaje final -->
+      <div id="puzzle-final-message" style="display:none; text-align:center; margin-top:20px;">
+        <p>¡Lo lograste! Cada pieza encaja… como nosotros. ❤️</p>
+        <button id="closePuzzle5" class="boton-juego2">Cerrar</button>
+      </div>
+
+      <!-- Botón para iniciar -->
+      <button id="startPuzzle5" class="boton-juego2">Mezclar y jugar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL JUEGO 6 - Gira la botella -->
+<div id="modalJuego6" class="modal-juego" style="display:none;">
+  <div class="contenido-juego">
+    <span class="cerrar-submodal" data-juego="6">×</span>
+    <div id="juego-6-container">
+        <h2 class="titulo-juego">🍾 Gira la botella</h2>
+
+        <!-- Fondo del juego -->
+        <div id="bottle-game-area" style="position:relative; width:400px; height:400px; margin:20px auto; background-image:url('img/fondobotella.jpg'); background-size:cover; border-radius:12px;">
+            <img id="bottle" src="img/botella.jpg" alt="Botella" style="width:80px; position:absolute; top:160px; left:160px; cursor:pointer; transition: transform 2s ease;">
+        </div>
+
+        <!-- Modal de elección Verdad/Reto -->
+        <div id="truth-dare-modal" style="display:none; text-align:center; margin-top:20px; border:2px solid #ff78d1; padding:20px; border-radius:12px; background:#fff0f6;">
+            <p>¿Verdad o Reto? 💖</p>
+            <button class="truth-btn boton-juego2">Verdad</button>
+            <button class="dare-btn boton-juego2">Reto</button>
+        </div>
+
+        <!-- Modal con pregunta o reto -->
+        <div id="question-dare-display" style="display:none; text-align:center; margin-top:20px; border:2px solid #ff78d1; padding:20px; border-radius:12px; background:#fff0f6;">
+            <p id="question-dare-text"></p>
+            <button id="closeQuestionDare" class="boton-juego2">Cerrar</button>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL JUEGO 7 -->
+<div id="modalJuego7" class="modal-juego" style="display:none;">
+  <div class="contenido-juego">
+    <span class="cerrar-submodal" data-juego="7">×</span>
+
+    <div id="juego-7-container">
+        <h2 class="titulo-juego">🎵 Adivina la canción</h2>
+        <p>Escuchá el pedacito y elegí la respuesta correcta:</p>
+
+        <audio id="audio7" controls></audio>
+
+        <div id="opciones7" class="opciones-juego">
+            <button class="opcion7 btn-juego"></button>
+            <button class="opcion7 btn-juego"></button>
+            <button class="opcion7 btn-juego"></button>
+        </div>
+
+        <div id="resultado7" class="resultado-juego" style="display:none;">
+            Mi esposo sí sabe de cultura, bien hecho, cariño
+            <br>
+            <button id="cerrarJuego7" class="boton-juego2" style="margin-top:10px;">Cerrar</button>
+        </div>
+
+        <button id="startJuego7" class="boton-juego2" style="margin-top:15px;">Comenzar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL JUEGO 8 -->
+<div id="modalJuego8" class="modal-juego" style="display:none;">
+  <div class="contenido-juego caja-fuerte-box">
+    <span class="cerrar-submodal" data-juego="8">×</span>
+
+    <h2 class="titulo-juego">🔐 Caja Fuerte del Amor</h2>
+    <p>Ingresá el código secreto...</p>
+
+    <div class="caja-fuerte-layout">
+        
+        <!-- COFRE IZQUIERDA -->
+        <div class="cofre-lado">
+            <div id="cofre8" class="cofre cerrado"></div>
+        </div>
+
+        <!-- TECLADO DERECHA -->
+        <div class="teclado-lado">
+
+            <input id="codigo8" type="password" maxlength="4" class="input-codigo" placeholder="• • • •" disabled>
+
+            <div id="teclado8">
+              <button class="btn-num" data-num="1">1</button>
+              <button class="btn-num" data-num="2">2</button>
+              <button class="btn-num" data-num="3">3</button>
+              <button class="btn-num" data-num="4">4</button>
+              <button class="btn-num" data-num="5">5</button>
+              <button class="btn-num" data-num="6">6</button>
+              <button class="btn-num" data-num="7">7</button>
+              <button class="btn-num" data-num="8">8</button>
+              <button class="btn-num" data-num="9">9</button>
+              <button class="btn-num borrar">⌫</button>
+              <button class="btn-num" data-num="0">0</button>
+              <button id="confirmar8" class="btn-num ok">✔</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MENSAJE OCULTO -->
+    <div id="mensaje8" class="mensaje-secreto"></div>
+    
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

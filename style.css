@@ -1,0 +1,1690 @@
+/* === FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
+/* === ESTILO GENERAL === */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9db5, #ff6a88, #ff99aa);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 700px;
+    margin: 60px auto 0 auto;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* ← NECESARIO */
+}
+
+/* Título */
+.titulo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(255, 50, 100, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Botón para abrir carta */
+.btn-carta {
+    background: #ff6a88;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.btn-carta:hover {
+    background: #ff99aa;
+    transform: scale(1.08);
+}
+
+/* Modal carta */
+.carta-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+}
+
+/* Sobre */
+.sobre {
+    width: 650px;
+    height: 450px;
+    background: #fff4f6;
+    border: 3px solid #eab7be;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+/* Blur para corazones detrás del sobre */
+.sobre::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(6px);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Tapa del sobre */
+.tapa {
+    position: absolute;
+    width: 100%;
+    height: 55%;
+    background: #ffccd5;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: 0.8s ease;
+    z-index: 10;
+}
+
+.sobre.abierto .tapa {
+    transform: rotateX(-130deg);
+}
+
+/* Contenido de la carta — scrollable */
+.contenido {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 30px 36px;
+    background: #fff7fa;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    z-index: 20;
+
+    /* Scroll */
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    transition: 1s ease;
+}
+
+.sobre.abierto .contenido {
+    bottom: 0;
+}
+
+/* Tipografía dentro de la carta */
+.titulo-carta {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.6rem;
+    color: #b84b63;
+    margin-bottom: 15px;
+}
+
+.texto-carta {
+    color: #633b44;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.firma-carta {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #ba4d63;
+    margin-top: 20px;
+}
+
+/* Botón cerrar */
+.btnCerrar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: rgba(255, 150, 180, 0.35);
+    border: none;
+    color: #ba4d63;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(3px);
+    transition: 0.2s;
+    z-index: 25;
+}
+.btnCerrar:hover {
+    background: rgba(255, 150, 180, 0.6);
+}
+
+/* Corazones flotando */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 500;
+}
+
+.heart {
+    position: absolute;
+    bottom: -40px;
+    font-size: 2rem;
+    color: #8b1e3f;
+    opacity: 0.9;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* ========================== */
+/*      BOTONES SORPRESA      */
+/* ========================== */
+
+.botones-sorpresa {
+    text-align: center;
+    margin: 20px 0 40px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-sorpresa {
+    background: #ff9fbf;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-sorpresa:hover {
+    transform: scale(1.1);
+    background: #ff7aa6;
+}
+
+/* ========================== */
+/*      BOTONES SECRETOS       */
+/* ========================== */
+
+/* Contenedor de botones secretos */
+.secret-buttons {
+    position: fixed;           /* para que queden sobre todo */
+    top: 20px;                 /* desde arriba */
+    right: 20px;               /* alineados a la derecha */
+    display: flex;             /* para que estén uno al lado del otro */
+    gap: 10px;                 /* separación entre botones */
+    z-index: 60;
+}
+
+/* Botones secretos */
+.secret-btn {
+    background: transparent;
+    border: 2px solid #ff9fbf;
+    color: #ff4d7a;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.5s ease;
+}
+
+.secret-btn:hover {
+    opacity: 1;
+    transform: scale(1.3);
+    background: #ffb0c0;
+    color: white;
+}
+
+/* Fondo del modal */
+.modal-secreto {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Caja interna */
+.contenido-secreto {
+    background: #ffe6f0;
+    border-radius: 18px;
+    padding: 25px 30px;
+    width: 85%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    font-family: 'Cormorant Garamond', serif;
+    animation: popup 0.5s ease;
+    position: relative;
+}
+
+/* Botón de cerrar */
+.cerrar-secreto {
+    position: absolute;
+    top: -5px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #b0345b;
+    transition: 0.5s;
+}
+
+.cerrar-secreto:hover {
+    transform: scale(1.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popup {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.polaroid {
+    width: 250px;
+    padding: 15px 15px 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.polaroid-img {
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+}
+
+.polaroid-caption {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.polaroid-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.polaroid {
+    width: 250px;
+    padding: 15px 15px 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.polaroid-img {
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+}
+
+.polaroid-caption {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* =============================== */
+/*        BOTONES SORPRESA         */
+/* =============================== */
+
+.botones-sorpresa {
+    text-align: center;
+    margin: 20px 0 40px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-sorpresa {
+    background: #ff9fbf;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.btn-sorpresa:hover {
+    transform: scale(1.1);
+    background: #ff7aa6;
+}
+
+/* EFECTOS QUE APARECEN */
+#efecto-contenedor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.efecto-item {
+    position: absolute;
+    font-size: 2rem;
+    animation: flotar 5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes flotar {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(1.4);
+    }
+}
+
+
+
+.music-btn:hover {
+    background: #ff5189;
+    transform: scale(1.05);
+}
+
+/* =============================== */
+/*       MENSAJE FLOTANTE LINDO    */
+/* =============================== */
+#mensaje-flotante {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 182, 193, 0.95);
+    padding: 12px 20px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: 'Dancing Script', cursive;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+#music-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;   /* ✔ posición a la izquierda */
+    background: #ff8fa3;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 9999; /* ✔ para que quede arriba de todo */
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+#music-btn:hover {
+    background: #ff5189;
+    transform: scale(1.05);
+}
+
+/* =============================== */
+/*        MODAL GALERÍA            */
+/* =============================== */
+
+.modal-galeria {
+    display: none; /* IMPORTANTE: Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.galeria-contenido {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.galeria-slider img {
+    max-width: 100%;
+    max-height: 85vh; /* que no rompa la pantalla */
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Botón cerrar (X) */
+.cerrar-galeria {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Flechas */
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+    z-index: 10000;
+}
+
+.flecha:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.flecha.izquierda {
+    left: 10px;
+}
+
+.flecha.derecha {
+    right: 10px;
+}
+
+.slider-img {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.slider-img.mostrar {
+    transform: scale(1);
+    opacity: 1;
+}
+
+#btnJuegos {
+    padding: 12px 25px;
+    font-size: 20px;
+    border-radius: 8px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+#btnJuegos:hover {
+    transform: scale(1.05);
+}
+
+.oculto {
+    display: none;
+}
+
+#juegosContainer {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(255, 230, 236, 0.85);
+    border-radius: 14px;
+    animation: fadeIn .4s ease forwards;
+    text-align: center;
+}
+
+.lista-juegos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.juego-btn {
+    padding: 12px;
+    background: white;
+    border: 2px solid #ff4d6d;
+    color: #ff4d6d;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.juego-btn:hover {
+    background: #ff4d6d;
+    color: white;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/*       MODAL JUEGOS        */
+/* ========================= */
+/* Modal general */
+#modalJuegos {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+}
+
+/* Contenedor interno del modal */
+#modalJuegos .contenido-juegos {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  width: 85%;
+  max-width: 420px;          /* 🔥 Ahora queda más chico y prolijo */
+  max-height: 80vh;          /* 🔥 Evita que se corte */
+  overflow-y: auto;          /* 🔥 Permite scroll dentro del modal */
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  animation: aparecer .3s ease;
+}
+
+/* Scroll suave */
+#modalJuegos .contenido-juegos::-webkit-scrollbar {
+  width: 6px;
+}
+#modalJuegos .contenido-juegos::-webkit-scrollbar-thumb {
+  background: #ffb6d9;
+  border-radius: 10px;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.cerrar-x, .cerrar-juego {
+    font-size: 25px;
+    cursor: pointer;
+    float: right;
+    color: #ff7aa6;
+}
+
+.juego-btn, .btn-adivinar {
+    background: #ff9fbf;
+    border: none;
+    padding: 12px 18px;
+    margin: 12px 0;
+    border-radius: 20px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 90%;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.juego-btn:hover, .btn-adivinar:hover {
+    background: #ff7aa6;
+    transform: scale(1.05);
+}
+
+#inputAdivina {
+    width: 90%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid #ff9fbf;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.resultado {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* EFECTO CORAZONES */
+.corazon-explosion {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: flotar 1.5s ease-out forwards;
+}
+
+@keyframes flotar {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-120px); }
+}
+
+.cerrar-juegos {
+    display: none !important;
+}
+
+/* Área donde aparece el corazón */
+.area-juego {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+/* El corazón que aparece aleatoriamente */
+.corazon-juego1 {
+    position: absolute;
+    font-size: 40px;
+    cursor: pointer;
+    user-select: none;
+    animation: popIn 0.3s ease-out;
+}
+
+/* Animación POP */
+@keyframes popIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Mensaje tierno */
+.mensaje-tierno {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+    color: #ff4d88;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animación para el mensaje */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Botón de iniciar */
+.btn-iniciar-juego {
+    padding: 10px 20px;
+    background: #ff76ad;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-iniciar-juego:hover {
+    transform: scale(1.05);
+}
+
+.modal-juego {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 182, 193, 0.25);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.contenido-juego.juego-estetico {
+  background: #ffe6eb;
+  border-radius: 20px;
+  padding: 25px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.45);
+  position: relative;
+  animation: aparecerJuego 0.3s ease-out;
+}
+
+@keyframes aparecerJuego {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.cerrar-submodal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #ff6f8f;
+  transition: 0.2s;
+}
+.cerrar-submodal:hover {
+  transform: scale(1.2);
+}
+
+.juego1-wrapper {
+  text-align: center;
+}
+
+.area-juego {
+  width: 100%;
+  height: 300px;
+  margin-top: 15px;
+  background: white;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(255, 105, 180, 0.25);
+}
+
+.corazon-juego1 {
+  position: absolute;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-iniciar-juego {
+  background: #ff8fb0;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+.btn-iniciar-juego:hover {
+  background: #ff6f91;
+  transform: scale(1.05);
+}
+
+.mensaje-tierno {
+  margin-top: 12px;
+  font-size: 18px;
+  color: #ff4d78;
+  font-weight: bold;
+}
+
+/* --- JUEGO 2 --- */
+/* Área del juego */
+#gameArea2 {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border: 2px solid #ff7cc7;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+    background: #ffe4f2;
+}
+
+/* Corazones falsos */
+.corazon-falso {
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+    animation: move-fast 1.2s linear infinite;
+    opacity: 0.8;
+}
+
+/* Corazón verdadero */
+.corazon-real {
+    position: absolute;
+    font-size: 45px;
+    cursor: pointer;
+    animation: move-fast 1.2s linear infinite, shine 0.8s alternate infinite;
+}
+
+/* Efecto brillo */
+@keyframes shine {
+    0% { text-shadow: 0 0 5px #ff77c2; }
+    100% { text-shadow: 0 0 15px #ff1493; }
+}
+
+/* Movimiento rápido */
+@keyframes move-fast {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(50px, -30px); }
+    50% { transform: translate(-40px, 60px); }
+    75% { transform: translate(30px, -50px); }
+    100% { transform: translate(0,0); }
+}
+
+/* Timer */
+#timer2 {
+    font-size: 22px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #d1006b;
+}
+
+/* Botón */
+.boton-juego2 {
+    background-color: #ff88dd;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boton-juego2:hover {
+    background-color: #ff5fcf;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+}
+
+/* Modal resultado del juego 2 */
+.modal2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal2-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 330px;
+    text-align: center;
+    animation: aparecerModal .3s ease-out;
+    border: 3px solid #ff78d1;
+}
+
+#resultMessage2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #d1006b;
+    font-weight: bold;
+}
+
+.cerrar-modal {
+    background-color: #ff88dd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cerrar-modal:hover {
+    background-color: #ff5fcf;
+}
+
+@keyframes aparecerModal {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ----- QUIZ MODO OSCURO ------ */
+.quiz-dark {
+    background: linear-gradient(145deg, #0d0d0f, #1a1a1d);
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #ff3ea5;
+    box-shadow: 0 0 25px rgba(255, 62, 165, 0.4);
+}
+
+.titulo-quiz {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.quiz-pregunta {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Opciones */
+.quiz-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opcion-btn {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+/* EFECTO SWEET */
+.opcion-sweet {
+    background: rgba(255, 167, 232, 0.2);
+    border: 1px solid #ff99dd;
+}
+.opcion-sweet.active {
+    box-shadow: 0 0 15px #ff99dd;
+    transform: scale(1.05);
+}
+
+/* EFECTO LOVE */
+.opcion-love {
+    background: rgba(255, 60, 120, 0.2);
+    border: 1px solid #ff3c78;
+}
+.opcion-love.active {
+    box-shadow: 0 0 18px #ff3c78;
+    transform: scale(1.05);
+}
+
+/* EFECTO HOT */
+.opcion-hot {
+    background: rgba(255, 80, 30, 0.2);
+    border: 1px solid #ff5522;
+}
+.opcion-hot.active {
+    box-shadow: 0 0 22px #ff4010;
+    transform: scale(1.05);
+}
+
+/* Transición pantalla */
+.fadeOutLeft {
+    animation: fadeOutLeft 0.5s forwards;
+}
+.fadeInRight {
+    animation: fadeInRight 0.5s forwards;
+}
+
+@keyframes fadeOutLeft {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(-80px); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(80px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Progreso */
+.quiz-progreso {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.opcion-btn {
+    background-color: #ff9ecb;   /* 💗 el color rosita de la primera opción */
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Efecto al presionar */
+.opcion-btn.active,
+.opcion-btn:hover {
+    background-color: #ff75b3;  /* un rosita un poquito más fuerte */
+}
+
+/* ===== Juego 4: Sopla las rosas ===== */
+.area-game4 {
+  width: 100%;
+  height: 320px;
+  background: linear-gradient(180deg,#fff3f8,#ffeaf2);
+  border: 2px dashed rgba(255,120,170,0.25);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+  touch-action: none; /* importante para touch */
+}
+
+/* cada rosa/petalo */
+.rosa-item {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  cursor:pointer;
+  user-select: none;
+  transition: transform 220ms ease, opacity 300ms ease;
+  will-change: transform, opacity;
+}
+
+/* animación cuando soplan: sube y desvanece */
+.rosa-item.fly-away {
+  animation: flyAway 700ms ease forwards;
+}
+@keyframes flyAway {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-240px) translateX(30px) scale(0.6); opacity: 0; }
+}
+
+/* pequeño "pop" */
+.rosa-item.pop {
+  transform: scale(1.25);
+  transition: transform 120ms ease;
+}
+
+/* contador y mensajes */
+.contador4 {
+  margin-top: 10px;
+  text-align: center;
+  color: #b10068;
+  font-weight: bold;
+}
+
+.final-message4 {
+  margin-top: 12px;
+  background: #fff0f6;
+  border: 2px solid #ff78d1;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  color: #8b004c;
+}
+
+/* botón (ya usas .boton-juego2, se adapta) */
+
+/* Área del juego 4 */
+.area-game4 {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* rosas */
+.rosa4 {
+  position: absolute;
+  width: 80px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  pointer-events: auto;
+}
+
+.rosa4.volando {
+  transform: scale(0.2) translateY(-60px) rotate(20deg);
+  opacity: 0;
+}
+
+.contador4 {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff2e63;
+}
+
+.final-message4 {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #d10070;
+}
+
+.area-game4 {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+.rosa-emoji {
+  position: absolute;
+  font-size: 38px; /* tamaño del emoji 🌹 */
+  transition: 0.4s;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Imagen en el centro */
+.centro-habilidad {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0; /* las rosas quedan arriba */
+  text-align: center;
+}
+
+.centro-habilidad img {
+  width: 150px;
+  opacity: 0.2;  /* semi-oculta hasta que sopla */
+}
+
+.habilidad-img {
+    width: 80%;
+    max-width: 300px;
+    display: block;
+    margin: 10px auto 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 0, 100, 0.4);
+    animation: popIn 0.4s ease-out;
+}
+
+.mensaje-habilidad {
+    font-size: 1.1rem;
+    color: #ff3e7f;
+    font-weight: 600;
+    margin-bottom: 15px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== Juego 5: Puzzle Romántico ===== */
+#puzzle-area {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 20px auto;
+    border: 2px solid #ff78d1;
+    border-radius: 12px;
+    background: #fff0f6;
+}
+
+.puzzle-piece {
+    width: 20%; /* 5 piezas por fila */
+    height: 20%; /* 5 piezas por columna */
+    position: absolute;
+    background-size: 500% 500%; /* 5x5 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.puzzle-piece.dragging {
+    opacity: 0.6;
+    z-index: 10;
+}
+
+/* ===== Puzzle: título y mensaje final ===== */
+#juego-5-container .titulo-juego {
+    text-align: center;
+    font-size: 2em;
+    color: #ff4da6;
+    text-shadow: 2px 2px 5px #ffc0dd;
+    margin-bottom: 15px;
+    font-family: 'Dancing Script', cursive;
+}
+
+#puzzle-final-message {
+    display: none; /* ya lo controlas con JS */
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ffe6f0, #ffb3d9);
+    box-shadow: 0 0 15px rgba(255, 77, 166, 0.6), 0 0 30px rgba(255, 77, 166, 0.3) inset;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3em;
+    color: #800040;
+    border: 2px solid #ff78d1;
+    position: relative;
+}
+
+#puzzle-final-message p {
+    margin: 0 0 10px 0;
+}
+
+#puzzle-final-message button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 12px;
+    background-color: #ff4da6;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#puzzle-final-message button:hover {
+    background-color: #ff78d1;
+    transform: scale(1.05);
+}
+
+#bottle-game-area img#bottle {
+    transform-origin: center center;
+}
+#truth-dare-modal button, #question-dare-display button {
+    margin: 10px;
+}
+
+/* ===== Juego 7: Adivina la canción ===== */
+#juego-7-container {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.opciones-juego {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-juego {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #ff78d1;
+    background-color: #fff0f6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-juego:hover {
+    background-color: #ff78d1;
+    color: white;
+}
+
+/* Modal general */
+.modal-juego {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.contenido-juego {
+  background: #fff0f6;
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.contenido-juego .cerrar-submodal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#juego-7-container h2.titulo-juego {
+  background: #ff78d1;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.opciones-juego {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.opcion7 {
+  background: #fff;
+  border: 2px solid #ff78d1;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.opcion7:hover {
+  background: #ff78d1;
+  color: #fff;
+}
+
+.resultado-juego {
+  margin-top: 20px;
+  background: #78ff9a;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.caja-fuerte-box {
+  max-width: 350px;
+  text-align: center;
+}
+
+.input-codigo {
+  width: 160px;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #ff8ac0;
+  outline: none;
+  margin-bottom: 15px;
+  background: #fff0f5;
+}
+
+.mensaje-secreto {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff2e7e;
+  display: none;
+  animation: aparecer 0.5s ease forwards;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Caja fuerte */
+.caja-fuerte-box {
+  max-width: 320px;
+  text-align: center;
+}
+
+/* Cofre */
+#cofre8 {
+  width: 180px;
+  height: 140px;
+  margin: 10px auto 20px;
+  background-size: cover;
+  transition: transform 0.7s ease;
+}
+
+/* Imágenes (poné tus imágenes reales) */
+#cofre8.cerrado {
+  background-image: url('img/cofre-cerrado.jpg');
+}
+
+#cofre8.abierto {
+  background-image: url('img/cofre-abierto.jpg');
+  transform: scale(1.1);
+}
+
+/* Input */
+.input-codigo {
+  width: 150px;
+  padding: 10px;
+  font-size: 26px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #ff73b5;
+  background: #ffe6f1;
+  margin-bottom: 15px;
+  letter-spacing: 8px;
+}
+
+/* Teclado */
+.teclado8 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  justify-items: center;
+}
+
+.btn-num {
+  width: 70px;
+  height: 55px;
+  font-size: 22px;
+  border-radius: 10px;
+  border: none;
+  background: #ffd0e6;
+  transition: 0.2s;
+}
+
+.btn-num:hover {
+  background: #ff97c8;
+  transform: scale(1.05);
+}
+
+.btn-num.ok {
+  background: #c3ffc3;
+}
+
+.btn-num.borrar {
+  background: #ffcaca;
+}
+
+/* Mensaje secreto */
+.mensaje-secreto {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  display: none;
+  color: #ff2e7e;
+  animation: aparecer 0.6s ease forwards;
+}
+
+/* Efecto brillo */
+.brillo {
+  animation: brillo 1s ease;
+}
+
+@keyframes brillo {
+  0% { box-shadow: 0 0 5px #ff4fbf; }
+  50% { box-shadow: 0 0 18px #ff2e9d; }
+  100% { box-shadow: 0 0 5px #ff4fbf; }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes temblar {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.temblar {
+  animation: temblar 0.4s;
+}
+
+/* Layout general: cofre a la izquierda, teclado a la derecha */
+.caja-fuerte-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+/* Cofre */
+.cofre-lado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.teclado-lado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#modalJuego8 .contenido-juego {
+    width: 90%;
+    max-width: 650px;   /* antes seguro estaba en 350-400 */
+    min-height: 420px;
+}
+
+.caja-fuerte-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    flex-wrap: wrap; /* Esto permite que se acomode en pantallas chicas */
+}
+
+#cofre8 {
+    width: 220px;
+    height: 220px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* .teclado8 {
+    width: 200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+} */
+
+.btn-num {
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.input-codigo {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 12px;
+    width: 160px;
+    padding: 8px;
+}
+
+#modalJuego8 .contenido-juego {
+    padding: 25px !important;  /* más aire alrededor */
+}
+
+.caja-fuerte-layout {
+    padding: 10px;         /* distancia entre el borde y el contenido */
+    gap: 25px !important;  /* más espacio entre cofre y teclado */
+}
+
+/* ⬇ CENTRAR TECLADO DIGITAL DEL JUEGO 8 ⬇ */
+#teclado8 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;   /* ← CENTRA horizontal */
+    align-items: center;        /* ← CENTRA vertical */
+    gap: 10px;                  /* separación entre botones */
+    width: 100%;                /* ocupa todo el ancho disponible */
+    margin: 10px auto 0 auto;   /* centrar bloque */
+    padding: 10px;
+    max-width: 260px;           /* evita que se desborde */
+}
+
+/* Botones del teclado */
+#teclado8 .btn-num {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+    border-radius: 10px;
+    cursor: pointer;
+}
